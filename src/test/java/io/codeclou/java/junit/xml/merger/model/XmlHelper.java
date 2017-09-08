@@ -21,13 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.codeclou.java.junit.xml.merger;
+package io.codeclou.java.junit.xml.merger.model;
 
-public class Merger {
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
-    public static void main(String [] args) throws Exception {
-        JunitXmlParser junitXmlParser = new JunitXmlParser();
-        junitXmlParser.run(args);
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.ByteArrayInputStream;
+
+public class XmlHelper {
+    // Simple Mock for XML Node
+    static Node xmlFromString(String xml) throws Exception {
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document d = dBuilder.parse(new ByteArrayInputStream(xml.getBytes("UTF-8")));
+        return d.getFirstChild();
     }
-
 }

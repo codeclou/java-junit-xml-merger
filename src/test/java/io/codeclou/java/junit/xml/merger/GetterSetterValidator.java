@@ -23,11 +23,21 @@
  */
 package io.codeclou.java.junit.xml.merger;
 
-public class Merger {
+import com.openpojo.reflection.impl.PojoClassFactory;
+import com.openpojo.validation.Validator;
+import com.openpojo.validation.ValidatorBuilder;
+import com.openpojo.validation.test.impl.GetterTester;
+import com.openpojo.validation.test.impl.SetterTester;
 
-    public static void main(String [] args) throws Exception {
-        JunitXmlParser junitXmlParser = new JunitXmlParser();
-        junitXmlParser.run(args);
+public class GetterSetterValidator {
+
+    private static final Validator ACCESSOR_VALIDATOR = ValidatorBuilder.create()
+        .with(new GetterTester())
+        .with(new SetterTester())
+        .build();
+
+    public static void validateAccessors(final Class<?> clazz) {
+        ACCESSOR_VALIDATOR.validate(PojoClassFactory.getPojoClass(clazz));
     }
 
 }

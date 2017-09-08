@@ -21,13 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.codeclou.java.junit.xml.merger;
+package io.codeclou.java.junit.xml.merger.model;
 
-public class Merger {
+import io.codeclou.java.junit.xml.merger.GetterSetterValidator;
+import org.junit.Test;
 
-    public static void main(String [] args) throws Exception {
-        JunitXmlParser junitXmlParser = new JunitXmlParser();
-        junitXmlParser.run(args);
+public class TestSuiteTest {
+    @Test
+    public void testPojoGetterSetter() {
+        GetterSetterValidator.validateAccessors(TestSuite.class);
     }
-
 }
