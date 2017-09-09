@@ -1,8 +1,12 @@
 # java-junit-xml-merger
 
-![](https://codeclou.github.io/doc/badges/generated/test-coverage-100.svg?v2)
+[![](https://codeclou.github.io/doc/badges/generated/test-coverage-100.svg?v2)](https://codeclou.github.io/java-junit-xml-merger/test-coverage/1.0.0/)
 
 Merges multiple JUnit XML files into a single testsuites XML file.
+
+&nbsp;
+
+<p align="center"><img src"=width="80%" src="https://codeclou.github.io/java-junit-xml-merger/img/demo.gif" /></p>
 
 ----
 &nbsp;
