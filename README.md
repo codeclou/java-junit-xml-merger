@@ -44,11 +44,13 @@ A combined result will be written to `junit-all.xml`
 
 ```
 # INSTALL
-curl -o java-junit-xml-merger-0.0.1-fatjar.jar https://????
+curl -L -o junit-xml-merger.jar \
+     https://github.com/codeclou/java-junit-xml-merger/releases/download/1.0.0/junit-xml-merger.jar
+
 # RUN
-java -jar java-junit-xml-merger-0.0.1-fatjar.jar \
-     -i=reports/ \
-     -o=junit-all.xml \
+java -jar junit-xml-merger.jar \
+     -i=src/test/resources/ \
+     -o=output.xml \
      -s=My Suite
 ```
 
