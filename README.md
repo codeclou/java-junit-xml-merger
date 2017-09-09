@@ -57,6 +57,28 @@ java -jar junit-xml-merger.jar \
 -----
 &nbsp;
 
+### Demo
+
+```
+git clone https://github.com/codeclou/java-junit-xml-merger.git src
+cd src
+
+curl -L -o junit-xml-merger.jar \
+     https://github.com/codeclou/java-junit-xml-merger/releases/download/1.0.0/junit-xml-merger.jar
+
+java -jar junit-xml-merger.jar \
+     -i=src/test/resources/ \
+     -o=output.xml \
+     -s=My Suite
+
+# Show result
+xmllint --format output.xml | pygmentize
+```
+
+
+----
+&nbsp;
+
 ### License
 
 [MIT](https://github.com/cloutainer/java-junit-xml-merger/blob/master/LICENSE) © [Bernhard Grünewaldt](https://github.com/clouless)
