@@ -39,8 +39,8 @@ then this is for you
 
 ### Usage
 
-With folder `reports` containing multiple `*.xml` files in junit-xml format.
-A combined result will be written to `junit-all.xml`
+With folder `src/test/resources/` containing multiple `*.xml` files in junit-xml format.
+A combined result will be written to `output.xml`. The Suite name will be `My Suite`.
 
 ```
 # INSTALL
