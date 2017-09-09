@@ -2,7 +2,7 @@
 
 ![](https://codeclou.github.io/doc/badges/generated/test-coverage-100.svg?v2)
 
-Merges multiple Junit XML files into a single testsuites XML file.
+Merges multiple JUnit XML files into a single testsuites XML file.
 
 ----
 &nbsp;
