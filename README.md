@@ -1,6 +1,6 @@
 # java-junit-xml-merger
 
-:bangbang: WORK IN PROGRESS
+Merges multiple Junit XML files into a single testsuites XML file.
 
 ----
 &nbsp;
@@ -37,12 +37,17 @@ then this is for you
 
 ### Usage
 
+With folder `reports` containing multiple `*.xml` files in junit-xml format.
+A combined result will be written to `junit-all.xml`
+
 ```
-java -jar java-junit-xml-merger-0.0.1-jar-with-dependencies.jar \
-     -i=junit-report-1.xml \
-     -i=junit-report-2.xml \
+# INSTALL
+curl -o java-junit-xml-merger-0.0.1-fatjar.jar https://????
+# RUN
+java -jar java-junit-xml-merger-0.0.1-fatjar.jar \
+     -i=reports/ \
      -o=junit-all.xml \
-     -s="My Suite"
+     -s=My Suite
 ```
 
 -----
@@ -50,4 +55,4 @@ java -jar java-junit-xml-merger-0.0.1-jar-with-dependencies.jar \
 
 ### License
 
-[MIT](https://github.com/cloutainer/k8s-jenkins-slave-deploy/blob/master/LICENSE) © [Bernhard Grünewaldt](https://github.com/clouless)
+[MIT](https://github.com/cloutainer/java-junit-xml-merger/blob/master/LICENSE) © [Bernhard Grünewaldt](https://github.com/clouless)

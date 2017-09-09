@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 codeclou.io
+ * Copyright (c) 2017 Bernhard Grünewaldt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,12 +27,6 @@ import io.codeclou.java.junit.xml.merger.GetterSetterValidator;
 import io.codeclou.java.junit.xml.merger.JunitXmlParser;
 import org.junit.Test;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.ByteArrayInputStream;
 
 import static org.junit.Assert.assertEquals;
 
