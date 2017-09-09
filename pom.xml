@@ -72,14 +72,16 @@
         <artifactId>maven-assembly-plugin</artifactId>
         <version>3.1.0</version>
         <configuration>
+          <finalName>junit-xml-merger</finalName>
           <archive>
             <manifest>
               <mainClass>io.codeclou.java.junit.xml.merger.Merger</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
-            <descriptorRef>fatjar</descriptorRef>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
+          <appendAssemblyId>false</appendAssemblyId>
         </configuration>
         <executions>
           <execution>
