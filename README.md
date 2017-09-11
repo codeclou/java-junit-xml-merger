@@ -85,4 +85,4 @@ xmllint --format output.xml | pygmentize
 
 ### License
 
-[MIT](https://github.com/cloutainer/java-junit-xml-merger/blob/master/LICENSE) © [Bernhard Grünewaldt](https://github.com/clouless)
+[MIT](https://github.com/codeclou/java-junit-xml-merger/blob/master/LICENSE) © [Bernhard Grünewaldt](https://github.com/clouless)
