@@ -73,7 +73,7 @@ curl -L -o junit-xml-merger.jar \
 java -jar junit-xml-merger.jar \
      -i=src/test/resources/ \
      -o=output.xml \
-     -s=My Suite
+     -s="My Suite"
 
 # Show result
 xmllint --format output.xml | pygmentize
