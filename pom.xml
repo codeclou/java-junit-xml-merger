@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.codeclou</groupId>
   <artifactId>java-junit-xml-merger</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <organization>
     <name>codeclou.io</name>
     <url>http://codeclou.io/</url>

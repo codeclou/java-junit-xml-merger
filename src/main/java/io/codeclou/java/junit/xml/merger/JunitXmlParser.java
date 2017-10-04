@@ -27,6 +27,7 @@ import io.codeclou.java.junit.xml.merger.model.TestSuite;
 import io.codeclou.java.junit.xml.merger.model.TestSuites;
 import org.apache.commons.cli.*;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
@@ -59,12 +60,13 @@ public class JunitXmlParser {
 
     public TestSuite transform(Node testSuite) {
         TestSuite t = new TestSuite();
-        t.setTests(Long.valueOf(testSuite.getAttributes().getNamedItem("tests").getNodeValue()));
-        t.setErrors(Long.valueOf(testSuite.getAttributes().getNamedItem("errors").getNodeValue()));
-        t.setFailures(Long.valueOf(testSuite.getAttributes().getNamedItem("failures").getNodeValue()));
-        t.setSkipped(Long.valueOf(testSuite.getAttributes().getNamedItem("skipped").getNodeValue()));
+        NamedNodeMap attrs = testSuite.getAttributes();
+        t.setTests(attrs.getNamedItem("tests") != null ? Long.valueOf(attrs.getNamedItem("tests").getNodeValue()) : 0L);
+        t.setErrors(attrs.getNamedItem("errors") != null ? Long.valueOf(testSuite.getAttributes().getNamedItem("errors").getNodeValue()) : 0L);
+        t.setFailures(attrs.getNamedItem("failures") != null ? Long.valueOf(testSuite.getAttributes().getNamedItem("failures").getNodeValue()) : 0L);
+        t.setSkipped(attrs.getNamedItem("skipped") != null ? Long.valueOf(testSuite.getAttributes().getNamedItem("skipped").getNodeValue()) : 0L);
         t.setName(testSuite.getAttributes().getNamedItem("name").getNodeValue());
-        t.setTime(Double.valueOf(testSuite.getAttributes().getNamedItem("time").getNodeValue()));
+        t.setTime(attrs.getNamedItem("time") != null ? Double.valueOf(testSuite.getAttributes().getNamedItem("time").getNodeValue()) : 0.0);
         t.setXml(testSuite);
         return t;
     }

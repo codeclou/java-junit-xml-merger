@@ -53,6 +53,19 @@ public class JunitXmlParserTest {
     }
 
     @Test
+    public void testParseNotSoWellFormed() throws Exception {
+        JunitXmlParser parser = new JunitXmlParser();
+        TestSuite t = parser.parseTestSuite(getTestFile("my-not-so-well-formed-component-test.xml"));
+        assertEquals(Long.valueOf(0L), t.getErrors());
+        assertEquals(Long.valueOf(0L), t.getFailures());
+        assertEquals(Long.valueOf(0L), t.getSkipped());
+        assertEquals(Long.valueOf(0L), t.getTests());
+        assertTrue(t.getTime() >= 0.0);
+        assertEquals("i.am.empty.but.sometimes.that.happens", t.getName());
+        assertNotNull(t.getXml());
+    }
+
+    @Test
     public void testRunInvalidInput1() throws Exception {
         String[] args = {};
         JunitXmlParser parser = new JunitXmlParser();
