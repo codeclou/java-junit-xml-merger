@@ -1,6 +1,6 @@
 # java-junit-xml-merger
 
-[![](https://codeclou.github.io/doc/badges/generated/test-coverage-100.svg?v2)](https://codeclou.github.io/java-junit-xml-merger/test-coverage/1.0.0/)
+[![](https://codeclou.github.io/doc/badges/generated/test-coverage-100.svg?v2)](https://codeclou.github.io/java-junit-xml-merger/test-coverage/1.0.1/)
 
 Merges multiple JUnit XML files into a single testsuites XML file.
 
@@ -49,7 +49,7 @@ A combined result will be written to `output.xml`. The Suite name will be `My Su
 ```
 # INSTALL
 curl -L -o junit-xml-merger.jar \
-     https://github.com/codeclou/java-junit-xml-merger/releases/download/1.0.0/junit-xml-merger.jar
+     https://github.com/codeclou/java-junit-xml-merger/releases/download/1.0.1/junit-xml-merger.jar
 
 # RUN
 java -jar junit-xml-merger.jar \
@@ -68,7 +68,7 @@ git clone https://github.com/codeclou/java-junit-xml-merger.git src
 cd src
 
 curl -L -o junit-xml-merger.jar \
-     https://github.com/codeclou/java-junit-xml-merger/releases/download/1.0.0/junit-xml-merger.jar
+     https://github.com/codeclou/java-junit-xml-merger/releases/download/1.0.1/junit-xml-merger.jar
 
 java -jar junit-xml-merger.jar \
      -i=src/test/resources/ \
