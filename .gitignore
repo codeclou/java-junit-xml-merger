@@ -2,3 +2,6 @@
 .idea
 target
 output.xml
+.classpath
+.project
+.settings
