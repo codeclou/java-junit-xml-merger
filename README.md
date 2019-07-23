@@ -1,14 +1,12 @@
-# java-junit-xml-merger
+# Java JUnit XML Merger
+
+> Merges multiple JUnit XML files into a single testsuites XML file. Simply combine your test results from different test runners.
 
 [![](https://codeclou.github.io/java-junit-xml-merger/img/github-product-logo-java-merger.png)](https://github.com/codeclou/java-junit-xml-merger)
-
-Merges multiple JUnit XML files into a single testsuites XML file.
 
 [![](https://codeclou.github.io/doc/badges/generated/test-coverage-100.svg?v2)](https://codeclou.github.io/java-junit-xml-merger/test-coverage/1.0.1/)
 
 &nbsp;
-
-<p align="center"><img src"=width="80%" src="https://codeclou.github.io/java-junit-xml-merger/img/demo.gif" /></p>
 
 ----
 &nbsp;
@@ -65,6 +63,8 @@ java -jar junit-xml-merger.jar \
 
 ### Demo
 
+<p align="center"><img src"=width="80%" src="https://codeclou.github.io/java-junit-xml-merger/img/demo.gif" /></p>
+  
 ```
 git clone https://github.com/codeclou/java-junit-xml-merger.git src
 cd src
