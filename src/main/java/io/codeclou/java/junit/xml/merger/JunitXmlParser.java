@@ -117,7 +117,12 @@ public class JunitXmlParser {
                 for (File f : filesList) {
                     if (f.getAbsoluteFile().toString().endsWith(".xml")) {
                         System.out.println("\033[32;1;2mInfo >> adding " + f.getName() +  " to TestSuites\033[0m");
-                        suites.getTestSuites().add(parseTestSuite(f));
+                        try {
+                            suites.getTestSuites().add(parseTestSuite(f));
+                        } catch (Exception e) {
+                            System.out.println("\033[31;1mError >> the file " + f.getName() + " cannot be read: ignored\033[0m");
+                            e.printStackTrace();
+                        }
                     }
                 }
                 Document xml = suites.toXml();
