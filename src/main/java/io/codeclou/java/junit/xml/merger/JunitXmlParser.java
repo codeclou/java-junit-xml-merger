@@ -43,6 +43,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Collection;
 
 public class JunitXmlParser {
 
@@ -51,22 +52,47 @@ public class JunitXmlParser {
     private Boolean hasCmdLineParameterErrors = false;
     private Boolean hasFileNotFoundErrors = false;
 
-    protected TestSuite parseTestSuite(File filename) throws ParserConfigurationException, SAXException, IOException {
+    protected Collection<TestSuite> parseTestSuites(File filename) throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(filename);
         return transform(document.getFirstChild());
     }
 
-    public TestSuite transform(Node testSuite) {
+    public Collection<TestSuite> transform(Node testSuite) {
+        System.out.println();
+        Collection<TestSuite> testSuites = new java.util.ArrayList<>();
+        if (testSuite.getNodeName().equals("testsuites")) {
+            // Already a collection
+            for (int i = 0; i < testSuite.getChildNodes().getLength(); i++) {
+                Node child = testSuite.getChildNodes().item(i);
+                if (child.getNodeName().equals("testsuite")) {
+                    testSuites.add(transformTestSuite(child));
+                }
+            }
+        } else {
+            TestSuite t = transformTestSuite(testSuite);
+            testSuites.add(t);
+        }
+        return testSuites;
+    }
+
+    protected TestSuite parseTestSuite(File filename) throws ParserConfigurationException, SAXException, IOException {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document document = builder.parse(filename);
+        return transformTestSuite(document.getFirstChild());
+    }
+
+    public TestSuite transformTestSuite(Node testSuite) {
         TestSuite t = new TestSuite();
         NamedNodeMap attrs = testSuite.getAttributes();
         t.setTests(attrs.getNamedItem("tests") != null ? Long.valueOf(attrs.getNamedItem("tests").getNodeValue()) : 0L);
-        t.setErrors(attrs.getNamedItem("errors") != null ? Long.valueOf(testSuite.getAttributes().getNamedItem("errors").getNodeValue()) : 0L);
-        t.setFailures(attrs.getNamedItem("failures") != null ? Long.valueOf(testSuite.getAttributes().getNamedItem("failures").getNodeValue()) : 0L);
-        t.setSkipped(attrs.getNamedItem("skipped") != null ? Long.valueOf(testSuite.getAttributes().getNamedItem("skipped").getNodeValue()) : 0L);
-        t.setName(testSuite.getAttributes().getNamedItem("name").getNodeValue());
-        t.setTime(attrs.getNamedItem("time") != null ? Double.valueOf(testSuite.getAttributes().getNamedItem("time").getNodeValue()) : 0.0);
+        t.setErrors(attrs.getNamedItem("errors") != null ? Long.valueOf(attrs.getNamedItem("errors").getNodeValue()) : 0L);
+        t.setFailures(attrs.getNamedItem("failures") != null ? Long.valueOf(attrs.getNamedItem("failures").getNodeValue()) : 0L);
+        t.setSkipped(attrs.getNamedItem("skipped") != null ? Long.valueOf(attrs.getNamedItem("skipped").getNodeValue()) : 0L);
+        t.setName(attrs.getNamedItem("name").getNodeValue());
+        t.setTime(attrs.getNamedItem("time") != null ? Double.valueOf(attrs.getNamedItem("time").getNodeValue()) : 0.0);
         t.setXml(testSuite);
         return t;
     }
@@ -118,7 +144,7 @@ public class JunitXmlParser {
                     if (f.getAbsoluteFile().toString().endsWith(".xml")) {
                         System.out.println("\033[32;1;2mInfo >> adding " + f.getName() +  " to TestSuites\033[0m");
                         try {
-                            suites.getTestSuites().add(parseTestSuite(f));
+                            suites.getTestSuites().addAll(parseTestSuites(f));
                         } catch (Exception e) {
                             System.out.println("\033[31;1mError >> the file " + f.getName() + " cannot be read: ignored\033[0m");
                             e.printStackTrace();
