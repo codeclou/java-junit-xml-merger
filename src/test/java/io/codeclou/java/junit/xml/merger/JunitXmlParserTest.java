@@ -28,6 +28,7 @@ import org.junit.Test;
 import org.mockito.internal.util.reflection.Whitebox;
 
 import java.io.File;
+import java.util.Collection;
 
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.*;
@@ -37,6 +38,13 @@ public class JunitXmlParserTest {
     private File getTestFile(String filename) {
         ClassLoader classLoader = getClass().getClassLoader();
         return new File(classLoader.getResource(filename).getFile());
+    }
+
+    @Test
+    public void testParseSuites() throws Exception {
+        JunitXmlParser parser = new JunitXmlParser();
+        Collection<TestSuite> c = parser.parseTestSuites(getTestFile("testsuites.xml"));
+        assertFalse(c.isEmpty());
     }
 
     @Test
