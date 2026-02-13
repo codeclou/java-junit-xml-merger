@@ -6,3 +6,4 @@ output.xml
 .project
 .settings
 .DS_Store
+.dccache
