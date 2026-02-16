@@ -53,8 +53,9 @@ public class JunitXmlParser {
     private Boolean hasFileNotFoundErrors = false;
 
     protected Collection<TestSuite> parseTestSuites(File filename) throws ParserConfigurationException, SAXException, IOException {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+        DocumentBuilder builder = dbf.newDocumentBuilder();
         Document document = builder.parse(filename);
         return transform(document.getFirstChild());
     }
