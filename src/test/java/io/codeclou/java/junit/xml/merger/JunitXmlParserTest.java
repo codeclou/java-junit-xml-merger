@@ -28,6 +28,9 @@ import org.junit.Test;
 import org.mockito.internal.util.reflection.Whitebox;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.*;
@@ -37,6 +40,20 @@ public class JunitXmlParserTest {
     private File getTestFile(String filename) {
         ClassLoader classLoader = getClass().getClassLoader();
         return new File(classLoader.getResource(filename).getFile());
+    }
+
+    @Test
+    public void testParseSuites() throws Exception {
+        // GIVEN
+        JunitXmlParser parser = new JunitXmlParser();
+        // WHEN
+        Collection<TestSuite> c = parser.parseTestSuites(getTestFile("testsuites.xml"));
+        List<TestSuite> l = new ArrayList<>(c);
+        // THEN
+        assertFalse(c.isEmpty());
+        assertEquals(2, c.size());
+        assertEquals(l.get(0).getName(), "ut.io.codeclou.customfield.editor.model.rest.SortModelTestOne");
+        assertEquals(l.get(1). getName(), "ut.io.codeclou.customfield.editor.model.rest.SortModelTestTwo");
     }
 
     @Test

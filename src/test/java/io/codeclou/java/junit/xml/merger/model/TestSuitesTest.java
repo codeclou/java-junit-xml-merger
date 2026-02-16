@@ -39,8 +39,8 @@ public class TestSuitesTest {
     @Test
     public void testToXml() throws Exception {
         JunitXmlParser jxml = new JunitXmlParser();
-        TestSuite suite1 = jxml.transform(XmlHelper.xmlFromString("<testsuite name='foo' time='4.20' errors='1' tests='3' failures='5' skipped='2'></testsuite>".replaceAll("'", "\"")));
-        TestSuite suite2 = jxml.transform(XmlHelper.xmlFromString("<testsuite name='bar' time='21.01' errors='2' tests='4' failures='3' skipped='6'></testsuite>".replaceAll("'", "\"")));
+        TestSuite suite1 = jxml.transformTestSuite(XmlHelper.xmlFromString("<testsuite name='foo' time='4.20' errors='1' tests='3' failures='5' skipped='2'></testsuite>".replaceAll("'", "\"")));
+        TestSuite suite2 = jxml.transformTestSuite(XmlHelper.xmlFromString("<testsuite name='bar' time='21.01' errors='2' tests='4' failures='3' skipped='6'></testsuite>".replaceAll("'", "\"")));
         TestSuites suites = new TestSuites();
         suites.setName("foobar23");
         suites.getTestSuites().add(suite1);
