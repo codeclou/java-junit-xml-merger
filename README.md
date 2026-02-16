@@ -4,7 +4,8 @@
 
 [![](https://codeclou.github.io/java-junit-xml-merger/img/github-product-logo-java-merger.png)](https://github.com/codeclou/java-junit-xml-merger)
 
-[![](https://codeclou.github.io/doc/badges/generated/test-coverage-100.svg?v2)](https://codeclou.github.io/java-junit-xml-merger/test-coverage/1.0.1/)
+![](https://codeclou.github.io/doc/badges/generated/test-coverage-100.svg?v2)
+
 ----
 
 
