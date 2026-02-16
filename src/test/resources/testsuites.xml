@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-<testsuite tests="3" failures="0" name="ut.io.codeclou.customfield.editor.model.rest.SortModelTest" time="0.029" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="ut.io.codeclou.customfield.editor.model.rest.SortModelTestOne" time="0.029" errors="0" skipped="0">
   <testcase classname="ut.io.codeclou.customfield.editor.model.rest.SortModelTest" name="testIsValid" time="0"/>
   <testcase classname="ut.io.codeclou.customfield.editor.model.rest.SortModelTest" name="testToSortCollator" time="0.029"/>
   <testcase classname="ut.io.codeclou.customfield.editor.model.rest.SortModelTest" name="testIsDescending" time="0"/>
 </testsuite>
-<testsuite tests="3" failures="0" name="ut.io.codeclou.customfield.editor.model.rest.SortModelTest" time="0.029" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="ut.io.codeclou.customfield.editor.model.rest.SortModelTestTwo" time="0.029" errors="0" skipped="0">
   <testcase classname="ut.io.codeclou.customfield.editor.model.rest.SortModelTest" name="testIsValid" time="0"/>
   <testcase classname="ut.io.codeclou.customfield.editor.model.rest.SortModelTest" name="testToSortCollator" time="0.029"/>
   <testcase classname="ut.io.codeclou.customfield.editor.model.rest.SortModelTest" name="testIsDescending" time="0"/>
