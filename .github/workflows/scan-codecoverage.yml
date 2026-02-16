@@ -13,6 +13,7 @@ jobs:
           java-version: "21"
           distribution: "temurin"
           architecture: x64
+      - run: mvn test
       - run: mvn jacoco:report
       - run:
       - run: zip -r coverage-report-html.zip jacoco/*
