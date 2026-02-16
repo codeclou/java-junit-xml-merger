@@ -23,30 +23,18 @@
  */
 package io.codeclou.java.junit.xml.merger;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
-import static org.powermock.api.mockito.PowerMockito.whenNew;
-
-@RunWith(PowerMockRunner.class)
 public class MergerTest {
 
-    @Mock
-    private JunitXmlParser junitXmlParser;
-
-    @Before
-    public void init() throws Exception {
-        whenNew(JunitXmlParser.class).withNoArguments().thenReturn(junitXmlParser);
+    @Test
+    public void testMergerValidInput() throws Exception {
+        String[] args = { "-i foo", "-i bar" };
+        Merger.main(args);
     }
 
     @Test
-    @PrepareForTest({Merger.class})
-    public void testMergerValidInput() throws Exception {
-        String[] args = {"-i foo", "-i bar"};
-        Merger.main(args);
+    public void testCoverage() throws Exception {
+        new Merger();
     }
 }

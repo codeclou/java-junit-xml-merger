@@ -17,10 +17,12 @@ charset = utf-8
 [*.xml]
 indent_style = space
 indent_size = 2
+max_line_length = 150
 
 [*.java]
 indent_style = space
 indent_size = 4
+max_line_length = 250
 
 # Tab indentation (no size specified)
 [Makefile]

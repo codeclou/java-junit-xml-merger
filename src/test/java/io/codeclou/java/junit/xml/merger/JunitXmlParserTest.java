@@ -23,17 +23,16 @@
  */
 package io.codeclou.java.junit.xml.merger;
 
-import io.codeclou.java.junit.xml.merger.model.TestSuite;
-import org.junit.Test;
-import org.mockito.internal.util.reflection.Whitebox;
+import static junit.framework.TestCase.assertFalse;
+import static org.junit.Assert.*;
 
+import io.codeclou.java.junit.xml.merger.model.TestSuite;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import static junit.framework.TestCase.assertFalse;
-import static org.junit.Assert.*;
+import org.junit.Test;
+import org.mockito.internal.util.reflection.Whitebox;
 
 public class JunitXmlParserTest {
 
@@ -53,7 +52,7 @@ public class JunitXmlParserTest {
         assertFalse(c.isEmpty());
         assertEquals(2, c.size());
         assertEquals(l.get(0).getName(), "ut.io.codeclou.customfield.editor.model.rest.SortModelTestOne");
-        assertEquals(l.get(1). getName(), "ut.io.codeclou.customfield.editor.model.rest.SortModelTestTwo");
+        assertEquals(l.get(1).getName(), "ut.io.codeclou.customfield.editor.model.rest.SortModelTestTwo");
     }
 
     @Test
@@ -93,7 +92,7 @@ public class JunitXmlParserTest {
 
     @Test
     public void testRunInvalidInput2() throws Exception {
-        String[] args = {"-i=foo"};
+        String[] args = { "-i=foo" };
         JunitXmlParser parser = new JunitXmlParser();
         parser.run(args);
         Boolean hasCmdLineParameterErrors = (Boolean) Whitebox.getInternalState(parser, "hasCmdLineParameterErrors");
@@ -102,7 +101,7 @@ public class JunitXmlParserTest {
 
     @Test
     public void testRunInvalidInput3() throws Exception {
-        String[] args = {"-i=foo", "-o=bar.xml"};
+        String[] args = { "-i=foo", "-o=bar.xml" };
         JunitXmlParser parser = new JunitXmlParser();
         parser.run(args);
         Boolean hasCmdLineParameterErrors = (Boolean) Whitebox.getInternalState(parser, "hasCmdLineParameterErrors");
@@ -110,8 +109,20 @@ public class JunitXmlParserTest {
     }
 
     @Test
+    public void testRunInvalidXmlFiles() throws Exception {
+        // GIVEN
+        String[] args = { "-i=src/test/resources/invalid-files/", "-o=bar.xml", "-s=foo bar" };
+        JunitXmlParser parser = new JunitXmlParser();
+        // WHEN
+        parser.run(args);
+        // THEN
+        Boolean hasCmdLineParameterErrors = (Boolean) Whitebox.getInternalState(parser, "hasCmdLineParameterErrors");
+        assertFalse(hasCmdLineParameterErrors);
+    }
+
+    @Test
     public void testRunValidInputWithInvalidFolders() throws Exception {
-        String[] args = {"-i=foo", "-o=?x/bar.xml", "-s=foo"};
+        String[] args = { "-i=foo", "-o=?x/bar.xml", "-s=foo" };
         JunitXmlParser parser = new JunitXmlParser();
         parser.run(args);
         Boolean hasFileNotFoundErrors = (Boolean) Whitebox.getInternalState(parser, "hasFileNotFoundErrors");
@@ -120,7 +131,7 @@ public class JunitXmlParserTest {
 
     @Test
     public void testRunValidInputWithValidFolders() throws Exception {
-        String[] args = {"-i=src/test/resources/", "-o=output.xml", "-s=foo bar"};
+        String[] args = { "-i=src/test/resources/", "-o=output.xml", "-s=foo bar" };
         JunitXmlParser parser = new JunitXmlParser();
         parser.run(args);
         Boolean hasCmdLineParameterErrors = (Boolean) Whitebox.getInternalState(parser, "hasCmdLineParameterErrors");
@@ -133,7 +144,7 @@ public class JunitXmlParserTest {
     public void testRunValidInputWithEmptyInputFolder() throws Exception {
         File emptyDir = new File("src/test/resources/empty/");
         emptyDir.mkdir();
-        String[] args = {"-i=src/test/resources/empty/", "-o=output.xml", "-s=foo bar"};
+        String[] args = { "-i=src/test/resources/empty/", "-o=output.xml", "-s=foo bar" };
         JunitXmlParser parser = new JunitXmlParser();
         parser.run(args);
         Boolean hasCmdLineParameterErrors = (Boolean) Whitebox.getInternalState(parser, "hasCmdLineParameterErrors");
