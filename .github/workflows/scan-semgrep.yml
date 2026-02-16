@@ -1,9 +1,7 @@
 name: scan-semgrep
 on:
-  pull_request: {}
-  workflow_dispatch: {}
-  merge_group:
-    types: [checks_requested]
+  pull_request:
+    branches: [main]
 jobs:
   scan-semgrep:
     name: semgrep/ci
